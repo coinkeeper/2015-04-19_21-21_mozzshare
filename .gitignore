@@ -1,0 +1,37 @@
+src/*.exe
+src/mozzshare
+src/mozzshared
+src/test_mozzshare
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.bitcoin
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+mozzshare-qt
+Mozzshare-Qt.app
+
+# Unit-tests
+Makefile.test
+bitcoin-qt_test
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+
+!src/leveldb-*/Makefile
+!src/leveldb/Makefile
+!windows-build.patch
+!build/build.h
+build
