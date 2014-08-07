@@ -52,8 +52,6 @@ Ripening time of latest block: 48h
 
 Reduction:
 
-
-    BLOCK           MLS     PERIOD
    
 Genesisblock        9%	
 
