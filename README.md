@@ -52,14 +52,16 @@ Ripening time of latest block: 48h
 
 Reduction:
 
-   
-Genesisblock        9%	
+Genesis  block:      18,900,000(Premine,9%)
 
-No. 1440 blocks     3%      ±1 Day
+1-1440 blocks :      4375 (1Day, 3%)
 
-No. 11520 blocks	5%	    ±7 Days
+1441-11520 blocks :  1041 (7Days,5%)
 
-No. 54720 blocks	8%	    ±30 Days
+11521-54720 blocks : 388 (30Days,8%)
+
+54721- :             120 (30Months,75%)
+
 
 Other 75% will be output on average in 30 months
 
