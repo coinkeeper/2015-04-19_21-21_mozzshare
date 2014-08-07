@@ -53,15 +53,15 @@ Ripening time of latest block: 48h
 Reduction:
 
 
-   BLOCK	   MLS	PERIOD
+    BLOCK           MLS     PERIOD
    
-Genesis block	9%	
+Genesisblock        9%	
 
-No. 1440 block	3%	±1 Day
+No. 1440 blocks     3%      ±1 Day
 
-No. 11520 block	5%	±7 Days
+No. 11520 blocks	5%	    ±7 Days
 
-No. 54720 block	8%	±30 Days
+No. 54720 blocks	8%	    ±30 Days
 
 Other 75% will be output on average in 30 months
 
