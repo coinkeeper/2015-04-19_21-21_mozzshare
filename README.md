@@ -5,8 +5,7 @@ Copyright (c) 2014 The Mozzshare developers,
 (c) 2009-2014 Bitcoin Developers
 
 Below :	
-    Mozzlive-share abbreviates to MLS
- 	Mozzcoin abbreviates to Mozz
+    Mozzlive-share abbreviates to MLS，Mozzcoin abbreviates to Mozz
  	
 
 Introduction:
@@ -54,12 +53,18 @@ Ripening time of latest block: 48h
 Reduction:
 
 
-BLOCK	MLS	PERIOD
+   BLOCK	   MLS	PERIOD
+   
 Genesis block	9%	
+
 No. 1440 block	3%	±1 Day
+
 No. 11520 block	5%	±7 Days
+
 No. 54720 block	8%	±30 Days
+
 Other 75% will be output on average in 30 months
+
 
 Above, MLS mainly refers to GPUSHARE. There is a best choice of algorithm and will be released shortly.
 
