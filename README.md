@@ -8,7 +8,9 @@ Below :
     Mozzlive-share abbreviates to MLS
  	Mozzcoin abbreviates to Mozz
  	
+
 Introduction:
+-------
 
 Digital currency plays an increasingly important role in the world and we believe it will be popular among people. Mozzria manages to combine mobile platform and digital currency, which creates a new field in the Internet. There are three core products in our company, such as MOZZ, MOZZGAME and MOZZLIVE. Hoping that would bring new life to eco-system.
 
@@ -21,6 +23,7 @@ We add a new proof called POM (Proof of Manpower) into game designed. And the fi
  
 
 Proofs of Mozz:
+-------
 
 POW: 50% (tentative) digs from GPU as POW, for supporting operation in system of digital currency. Miners in GPU complete issue of share&coin through digging blocks and get Mozz as rewards. Miners’ benefit and balance of system are depending on free, open market conducts.
 
@@ -31,12 +34,14 @@ POM: Proof of Manpower. Players enjoy game by using mobile phone and get Mozz ea
  
 
 Features of GPU
+-------
 
 GPU algorithm and device are more average, decentralized, equal than any others, and easier to join. Learning from mining history, algorithm can stay for a long time in the mining process of GPU. Besides, in order to avoid over-centralization due to using FPGA, ASIC and other devices, the official should keep option to change algorithm so that it would be easy to take part in mining.
 
  
 
 Parameter of MLS:
+-------
 
 Proof: POW
 
