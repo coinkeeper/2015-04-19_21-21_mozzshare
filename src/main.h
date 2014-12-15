@@ -1278,7 +1278,7 @@ public:
     // returns the merkle root, or 0 in case of failure
     uint256 ExtractMatches(std::vector<uint256> &vMatch);
 };
-
+class CBlockIndex;
 
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
@@ -1305,7 +1305,7 @@ public:
     {
         SetNull();
     }
-
+/*
     void setSupply(uint32_t supply)
     {
         if(supply > 0x07ffffff)
@@ -1324,13 +1324,26 @@ public:
 
     uint32_t getSupply(void) const
     {
+        //mozzshare:repair bug
+        if(pindexBest && pindexBest->nHeight > 500000)
+            return nVersion & 0x0fffffff;
+
         return nVersion & 0x07ffffff;
     }
 
     int getVersion(void) const
     {
+        //mozzshare:repair bug
+        if(pindexBest && pindexBest->nHeight > 500000)
+            return (nVersion & 0xf0000000) >> 28;
+
         return (nVersion & 0xf8000000) >> 27;
     }
+*/
+    void setSupply(uint32_t supply);
+    void setVersion(int version);
+    uint32_t getSupply(void) const;
+    int getVersion(void) const;
 
     IMPLEMENT_SERIALIZE
     (
@@ -1758,11 +1771,19 @@ public:
 
     uint32_t getSupply(void) const
     {
+        //mozzshare:repair bug
+        if(pindexBest && pindexBest->nHeight > 500000)
+            return nVersion & 0x0fffffff;
+
         return nVersion & 0x07ffffff;
     }
 
     int getVersion(void) const
     {
+        //mozzshare:repair bug
+        if(pindexBest && pindexBest->nHeight > 500000)
+            return (nVersion & 0xf0000000) >> 28;
+
         return (nVersion & 0xf8000000) >> 27;
     }
 

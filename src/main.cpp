@@ -1178,8 +1178,8 @@ uint16_t GetNextBlockReward(CBlockIndex *pindexPrev)
 
 uint16_t GetCurrentBlockReward(CBlockIndex *pindexPrev)
 {
-    if (pindexPrev->getSupply() >= nMaxSupply)
-        return 0;
+   // if (pindexPrev->getSupply() >= nMaxSupply)
+    //    return 0;
 	
 	uint16_t nBlockReward = 0;
 	int nHeight = pindexPrev->nHeight + 1;
@@ -1201,12 +1201,12 @@ uint16_t GetCurrentBlockReward(CBlockIndex *pindexPrev)
 	{
 		nBlockReward = 388 ;
 	}
-	else// 30*30 dates: d39-d938
+    else if(nHeight <= 1367220)// 30*30 dates: d39-d938
 	{
 		nBlockReward = 120 ;
 		
-		if ( (pindexPrev->getSupply() + nBlockReward) > nMaxSupply) 
-			return  nMaxSupply - pindexPrev->getSupply();
+        //if ( (pindexPrev->getSupply() + nBlockReward) > nMaxSupply)
+        //	return  nMaxSupply - pindexPrev->getSupply();
 	}
 
 	//printf("GetCurrentBlockReward:nHeight= %u nBlockReward= %u\n", nHeight, nBlockReward);//TODO
@@ -1713,8 +1713,61 @@ bool CTransaction::CheckInputs(CValidationState &state, CCoinsViewCache &inputs,
     return true;
 }
 
+/*********************************************** //mozzshare:repair bug *****************************/
+void CBlockHeader::setSupply(uint32_t supply)
+{
+    //mozzshare:repair bug
+    if(pindexBest && pindexBest->nHeight > 500000)
+     {
+        if(supply > 0x0fffffff)
+            supply = 0x0fffffff;
 
+        nVersion = (nVersion & 0xf0000000) | (supply & 0x0fffffff);
+        return;
+    }
 
+    if(supply > 0x07ffffff)
+        supply = 0x07ffffff;
+
+    nVersion = (nVersion & 0xf8000000) | (supply & 0x07ffffff);
+}
+
+void CBlockHeader::setVersion(int version)
+{
+    //mozzshare:repair bug
+    if(pindexBest && pindexBest->nHeight > 500000)
+    {
+        if (version > 15)
+            version = 15;
+
+        nVersion = (version << 28) | (nVersion & 0x0fffffff);
+        return ;
+    }
+
+    if (version > 31)
+        version = 31;
+
+    nVersion = (version << 27) | (nVersion & 0x07ffffff);
+}
+
+uint32_t CBlockHeader::getSupply(void) const
+{
+    //mozzshare:repair bug
+    if(pindexBest && pindexBest->nHeight > 500000)
+        return nVersion & 0x0fffffff;
+
+    return nVersion & 0x07ffffff;
+}
+
+int CBlockHeader::getVersion(void) const
+{
+    //mozzshare:repair bug
+    if(pindexBest && pindexBest->nHeight > 500000)
+        return (nVersion & 0xf0000000) >> 28;
+
+    return (nVersion & 0xf8000000) >> 27;
+}
+/*********************************************** //mozzshare:repair bug *****************************/
 
 bool CBlock::DisconnectBlock(CValidationState &state, CBlockIndex *pindex, CCoinsViewCache &view, bool *pfClean)
 {
@@ -2577,8 +2630,6 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
         }
         mapOrphanBlocksByPrev.erase(hashPrev);
     }
-
-    printf("ProcessBlock: ACCEPTED\n");
     return true;
 }
 
@@ -2999,6 +3050,10 @@ bool InitBlockIndex() {
     fTxIndex = GetBoolArg("-txindex", false);
     pblocktree->WriteFlag("txindex", fTxIndex);
     printf("Initializing databases...\n");
+
+    // Check whether we have a transaction index
+    //pblocktree->ReadFlag("txindex", fTxIndex);
+    printf("InitBlockIndex(): transaction index %s\n", fTxIndex ? "enabled" : "disabled");
 
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {

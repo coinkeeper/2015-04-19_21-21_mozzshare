@@ -85,6 +85,7 @@ Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex)
    // result.push_back(Pair("vote", (boost::uint64_t)block.nVote));
     result.push_back(Pair("reward", (boost::uint64_t)block.nReward));
     result.push_back(Pair("supply", (boost::uint64_t)block.getSupply()));
+    result.push_back(Pair("ChainTx",(boost::uint64_t)blockindex->nChainTx));
 
     if (blockindex->pprev)
         result.push_back(Pair("previousblockhash", blockindex->pprev->GetBlockHash().GetHex()));

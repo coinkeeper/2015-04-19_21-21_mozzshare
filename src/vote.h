@@ -135,7 +135,8 @@ public:
                       uint16_t current, uint16_t next, uint16_t limit,
                       uint16_t phase, uint32_t supply, uint32_t target, uint32_t max)
     {
-        _height = (uint16_t)height;
+        //mozzshare:repair bug
+        _height = (uint32_t)height;
         _timespan = (uint16_t)timespan;
         _votespan = votespan ? votespan : 1;
         _current = current;
@@ -157,7 +158,10 @@ private:
     uint32_t _target;
     uint32_t _max;
 
-    uint16_t _height;
+    //uint16_t _height;
+    //mozzshare:repair bug
+    uint32_t _height;
+
     uint16_t _timespan;
     uint16_t _votespan;
 };
