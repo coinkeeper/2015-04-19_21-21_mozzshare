@@ -1717,7 +1717,7 @@ bool CTransaction::CheckInputs(CValidationState &state, CCoinsViewCache &inputs,
 void CBlockHeader::setSupply(uint32_t supply)
 {
     //mozzshare:repair bug
-    if(pindexBest && pindexBest->nHeight > 500000)
+    if(pindexBest && pindexBest->nHeight > 650000)
      {
         if(supply > 0x0fffffff)
             supply = 0x0fffffff;
@@ -1735,7 +1735,7 @@ void CBlockHeader::setSupply(uint32_t supply)
 void CBlockHeader::setVersion(int version)
 {
     //mozzshare:repair bug
-    if(pindexBest && pindexBest->nHeight > 500000)
+    if(pindexBest && pindexBest->nHeight > 650000)
     {
         if (version > 15)
             version = 15;
@@ -1753,7 +1753,7 @@ void CBlockHeader::setVersion(int version)
 uint32_t CBlockHeader::getSupply(void) const
 {
     //mozzshare:repair bug
-    if(pindexBest && pindexBest->nHeight > 500000)
+    if(pindexBest && pindexBest->nHeight > 650000)
         return nVersion & 0x0fffffff;
 
     return nVersion & 0x07ffffff;
@@ -1762,7 +1762,7 @@ uint32_t CBlockHeader::getSupply(void) const
 int CBlockHeader::getVersion(void) const
 {
     //mozzshare:repair bug
-    if(pindexBest && pindexBest->nHeight > 500000)
+    if(pindexBest && pindexBest->nHeight > 650000)
         return (nVersion & 0xf0000000) >> 28;
 
     return (nVersion & 0xf8000000) >> 27;

@@ -1325,7 +1325,7 @@ public:
     uint32_t getSupply(void) const
     {
         //mozzshare:repair bug
-        if(pindexBest && pindexBest->nHeight > 500000)
+        if(pindexBest && pindexBest->nHeight > 650000)
             return nVersion & 0x0fffffff;
 
         return nVersion & 0x07ffffff;
@@ -1334,7 +1334,7 @@ public:
     int getVersion(void) const
     {
         //mozzshare:repair bug
-        if(pindexBest && pindexBest->nHeight > 500000)
+        if(pindexBest && pindexBest->nHeight > 650000)
             return (nVersion & 0xf0000000) >> 28;
 
         return (nVersion & 0xf8000000) >> 27;
@@ -1772,7 +1772,7 @@ public:
     uint32_t getSupply(void) const
     {
         //mozzshare:repair bug
-        if(pindexBest && pindexBest->nHeight > 500000)
+        if(pindexBest && pindexBest->nHeight > 650000)
             return nVersion & 0x0fffffff;
 
         return nVersion & 0x07ffffff;
@@ -1781,7 +1781,7 @@ public:
     int getVersion(void) const
     {
         //mozzshare:repair bug
-        if(pindexBest && pindexBest->nHeight > 500000)
+        if(pindexBest && pindexBest->nHeight > 650000)
             return (nVersion & 0xf0000000) >> 28;
 
         return (nVersion & 0xf8000000) >> 27;
